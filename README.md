@@ -18,4 +18,6 @@ Example: `python simplePyLex.py ./data/django \*.py ./data/django.code.lexed.txt
 ### n-grams
 ===
 
-1. 
+1. Operations on bigrams in Python using [NLTK](http://www.nltk.org): [https://github.com/bvasiles/nlp-reading-group/blob/master/bigrams.py](https://github.com/bvasiles/nlp-reading-group/blob/master/bigrams.py)
+
+Takes as input some tokenized corpus. Illustrates possible operations on n-grams using NLTK
