@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import sys
 import os
 from folderManager import Folder
@@ -7,10 +9,10 @@ from pygments.lexers import get_lexer_for_filename
 from pygments import lex
 
 if len(sys.argv) < 4:
-    print 'Usage: python lex.py path_to_code_folder file_name_extension output_file'
+    print('Usage: python lex.py path_to_code_folder file_name_extension output_file')
     exit()
 
-print sys.argv
+print(sys.argv)
 
 # Path to root folder containing the source code
 codeFolder = Folder(os.path.abspath(sys.argv[1]))
@@ -29,7 +31,7 @@ for path in codeFolder.fullFileNames(fileExtension, recursive=True):
         tokens = lex(fileContents, lexer) # returns a generator of tuples
         tokensList = list(tokens)
         language = languageForLexer(lexer)
-    
+
         # Strip comments (this is language dependent; here only Python)
         lexedWoComments = tokensExceptTokenType(tokensList, Token.Comment)
         lexedWoComments = tokensExceptTokenType(lexedWoComments, Token.Literal.String.Doc)
@@ -37,9 +39,8 @@ for path in codeFolder.fullFileNames(fileExtension, recursive=True):
 
         # Write to file
         for token in [t[1] for t in lexedWoComments]:
-            outputFile.write(token.encode("utf-8"))
-            outputFile.write(' ')
-        
+            outputFile.write(token.encode('UTF-8'))
+            outputFile.write(b' ')
+
     except:
-        print 'Failed:', path
-    
+        print('Failed:', path)
